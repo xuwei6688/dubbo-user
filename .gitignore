@@ -72,3 +72,4 @@ lib/
 /order-api/target
 /order-provider/target
 /.idea/
+/target/

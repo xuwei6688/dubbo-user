@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd" default-autowire="byName">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com"/>
+    <!-- 当前服务在分布式系统中的唯一名称 -->
+    <dubbo:application name="dubbo-user"/>
+
+    <!-- 注册中心位置 -->
+    <dubbo:registry address="zookeeper://192.168.0.107:2181"/>
+
+    <import resource="classpath*:META-INF/client/api.xml"/>
+    <!-- 直接访问ip -->
+ <!--   <dubbo:reference id="orderService" interface="com.order.OrderService"
+        url="dubbo://192.168.56.1:20880/com.order.OrderService"/>-->
+
+    <!--<dubbo:reference id="orderService" interface="com.order.OrderService" version="2" async="true"/>-->
+</beans>
